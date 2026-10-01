@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+desktop.ini
+Thumbs.db
+
+# Obsidian transient state
+.obsidian/workspace*.json
+.obsidian/plugins/
+.obsidian/cache/
+.obsidian/logs/
+
+# LLM Wiki
+Raw/Files/*
+!Raw/Files/.gitkeep
+Drafts/
