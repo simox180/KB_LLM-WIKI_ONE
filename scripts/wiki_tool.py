@@ -150,13 +150,13 @@ def lint(_args):
         tags = meta.get("tags")
         if not isinstance(tags, list) or not tags or any(tag not in ALLOWED_TAGS for tag in tags):
             errors.append(f"{label}: tags must be a non-empty list from {', '.join(sorted(ALLOWED_TAGS))}")
-        for key in ("title", "type", "status", "created", "updated"):
+        if not isinstance(meta.get("topics"), list):
+            errors.append(f"{label}: topics must be a list")
+        if not isinstance(meta.get("aliases"), list):
+            errors.append(f"{label}: aliases must be a list")
+        for key in ("status", "created", "updated", "sources", "source_count"):
             if key not in meta or meta[key] in ("", None):
                 errors.append(f"{label}: missing required field {key}")
-        if meta.get("type") not in {"concept", "procedure", "reference", "decision", "index"}:
-            errors.append(f"{label}: type must be concept, procedure, reference, decision, or index")
-        if meta.get("status") not in {"draft", "reviewed", "deprecated"}:
-            errors.append(f"{label}: status must be draft, reviewed, or deprecated")
         for key in ("created", "updated"):
             try:
                 dt.date.fromisoformat(str(meta.get(key)))
@@ -170,14 +170,21 @@ def lint(_args):
         sources = source_paths(meta)
         if not isinstance(meta.get("sources"), list):
             errors.append(f"{label}: sources must be a list")
-        elif not sources and "log" not in tags:
+        elif not sources:
             errors.append(f"{label}: compiled notes require at least one source")
-        if meta.get("source_count") != len(sources):
+        if type(meta.get("source_count")) is not int:
+            errors.append(f"{label}: source_count must be an integer")
+        elif meta.get("source_count") != len(sources):
             errors.append(f"{label}: source_count must equal the number of sources")
         for entry in sources:
             target = link_path(entry)
-            candidate = ROOT / target
-            if not target.startswith("Raw/Sources/") or not candidate.is_file():
+            candidate = (ROOT / target).resolve()
+            try:
+                candidate.relative_to(RAW.resolve())
+                is_raw_source = True
+            except ValueError:
+                is_raw_source = False
+            if not target.startswith("Raw/Sources/") or not is_raw_source or not candidate.is_file():
                 errors.append(f"{label}: invalid source link {entry!r}")
     return report(errors, "lint passed")
 
@@ -263,7 +270,7 @@ def log(args):
     path = WIKI / "log.md"
     WIKI.mkdir(parents=True, exist_ok=True)
     if not path.exists():
-        path.write_text("---\ntitle: Wiki log\ntype: reference\nstatus: draft\ntags:\n  - log\ntopics: []\nsources: []\nsource_count: 0\ncreated: " + today() + "\nupdated: " + today() + "\n---\n\n# Wiki log\n", encoding="utf-8")
+        path.write_text("---\ntags:\n  - log\ntopics: []\nstatus: seed\ncreated: " + today() + "\nupdated: " + today() + "\nsources: []\nsource_count: 0\naliases: []\n---\n\n# Wiki log\n", encoding="utf-8")
     with path.open("a", encoding="utf-8") as handle:
         handle.write(f"\n## {today()} — {args.title}\n\n{args.details}\n")
     print(f"added log entry to {repo_path(path)}")
