@@ -12,7 +12,7 @@ Use this skill when importing, registering, or preparing a new source.
 3. Do not write summaries, conclusions, or reusable knowledge in either `Raw/Files/` or `Raw/Sources/`.
 4. Search `Wiki/catalog.jsonl` before inspecting broad `Raw/Sources/` context, to detect existing coverage.
 5. Record enough provenance in the `Raw/Sources/` Markdown file to let a future compiled note link back to that source and its original material or relevant location.
-6. After normalizing the source, always integrate its reusable knowledge into `Wiki/`. Update existing `Wiki/Concepts/` notes when they cover the same concept, and create a new Concept only when no suitable one exists. Update related Topic links only when necessary. Derive compiled knowledge exclusively from `Raw/Sources/` and follow `Schema/frontmatter-schema.md`.
+6. After normalizing the source, always integrate its reusable knowledge into `Wiki/`. First update compatible existing `Wiki/Concepts/` notes when they cover the same concept. Create a new Concept only when no suitable one exists and the concept is autonomously significant: it can be sensibly queried on its own and has its own algorithms, behavior, invariants, constraints, or edge cases. Do not create micro-Concepts for helpers, examples, minor details, or simple variants. Treat Topics as organizational hubs: they synthesize the domain, describe relationships, and link Concepts without duplicating their detailed explanations. Update related Topic links only when necessary. Derive compiled knowledge exclusively from `Raw/Sources/` and follow `Schema/frontmatter-schema.md`.
 7. Never invent a source, citation, URL, page number, timestamp, or claim.
 
 Before committing, run the repository's build, lint, and source checks and resolve failures.

@@ -83,6 +83,37 @@ def frontmatter(path: Path):
     return data, None
 
 
+def markdown_body(path: Path) -> str:
+    """Return a note's Markdown body, excluding its frontmatter when present."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        return ""
+    lines = text.splitlines()
+    if lines and lines[0].strip() == "---":
+        try:
+            end = next(i for i in range(1, len(lines)) if lines[i].strip() == "---")
+        except StopIteration:
+            return text
+        return "\n".join(lines[end + 1:])
+    return text
+
+
+def body_excerpt(body: str, query: str, limit: int = 180) -> str:
+    """Return a compact, deterministic excerpt around the first body match."""
+    normalized = re.sub(r"\s+", " ", body).strip()
+    index = normalized.casefold().find(query)
+    if index < 0:
+        return ""
+    start = max(0, index - limit // 3)
+    end = min(len(normalized), start + limit)
+    if end - start < limit:
+        start = max(0, end - limit)
+    prefix = "…" if start else ""
+    suffix = "…" if end < len(normalized) else ""
+    return prefix + normalized[start:end].strip() + suffix
+
+
 def link_path(value):
     value = str(value).strip()
     if value.startswith("[[") and value.endswith("]]" ):
@@ -123,7 +154,7 @@ def build(_args):
             print(f"warning: {repo_path(path)}: {error}", file=sys.stderr)
             continue
         tags = meta.get("tags", []) if isinstance(meta.get("tags"), list) else []
-        records.append({"path": repo_path(path), "title": str(meta.get("title", path.stem)), "tag": tags[0] if tags else "", "topics": meta.get("topics", []) if isinstance(meta.get("topics"), list) else [], "sources": [link_path(x) for x in source_paths(meta)], "updated": str(meta.get("updated", ""))})
+        records.append({"path": repo_path(path), "title": str(meta.get("title", path.stem)), "aliases": meta.get("aliases", []) if isinstance(meta.get("aliases"), list) else [], "summary": str(meta.get("summary", "")), "tag": tags[0] if tags else "", "topics": meta.get("topics", []) if isinstance(meta.get("topics"), list) else [], "sources": [link_path(x) for x in source_paths(meta)], "updated": str(meta.get("updated", ""))})
     records.sort(key=lambda item: item["path"])
     CATALOG.write_text("".join(json.dumps(item, ensure_ascii=False, sort_keys=True) + "\n" for item in records), encoding="utf-8")
 
@@ -252,15 +283,45 @@ def search_catalog(args):
     if not CATALOG.exists():
         print("catalog missing; run build first", file=sys.stderr)
         return 2
-    query = args.query.casefold()
+    query = args.query.casefold().strip()
+    if not query:
+        return 0
     matches = []
     for line in CATALOG.read_text(encoding="utf-8").splitlines():
         try:
             item = json.loads(line)
         except json.JSONDecodeError:
             continue
-        if query in json.dumps(item, ensure_ascii=False).casefold():
-            matches.append(item)
+        path = (ROOT / item.get("path", "")).resolve()
+        try:
+            path.relative_to(WIKI.resolve())
+        except ValueError:
+            continue
+        body = markdown_body(path) if path.is_file() else ""
+        fields = {
+            "title": str(item.get("title", "")),
+            "aliases": " ".join(str(alias) for alias in item.get("aliases", [])),
+            "summary": str(item.get("summary", "")),
+            "topics": " ".join(str(topic) for topic in item.get("topics", [])),
+            "body": body,
+        }
+        counts = {name: value.casefold().count(query) for name, value in fields.items()}
+        if not any(counts.values()):
+            continue
+        # Each field is capped so one higher-priority field always outweighs all lower ones.
+        score = sum(min(counts[name], 9) * weight for name, weight in {
+            "title": 10000,
+            "aliases": 1000,
+            "summary": 100,
+            "topics": 10,
+            "body": 1,
+        }.items())
+        result = dict(item)
+        result["score"] = score
+        if counts["body"]:
+            result["excerpt"] = body_excerpt(body, query)
+        matches.append(result)
+    matches.sort(key=lambda item: (-item["score"], item.get("path", "")))
     for item in matches:
         print(json.dumps(item, ensure_ascii=False, sort_keys=True))
     return 0
