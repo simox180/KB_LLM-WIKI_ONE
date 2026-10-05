@@ -6,8 +6,9 @@ L'obiettivo del progetto � creare una LLM Wiki strutturata, interrogabile e ma
 
 ## Struttura principale
 
-- `Raw/`  fonti originali e materiale grezzo
-- `Wiki/`  note compilate e riutilizzabili
+- `Raw/Files/`  file originali o binari (PDF, ZIP, immagini, DOCX ecc.), non compilati e ignorati da Git
+- `Raw/Sources/`  fonti Markdown normalizzate o trascritte derivate dagli originali, usate come sorgenti dalla Wiki
+- `Wiki/`  conoscenza compilata e riutilizzabile derivata esclusivamente da `Raw/Sources/`
 - `Schema/`  regole, convenzioni e controlli
 - `_templates/`  template delle note
 - `.agents/skills/`  skill usate dagli agenti
@@ -15,19 +16,18 @@ L'obiettivo del progetto � creare una LLM Wiki strutturata, interrogabile e ma
 
 ## Workflow
 
-1. Inserire le fonti in `Raw/Sources/`
-2. Compilare la conoscenza in `Wiki/`
-3. Collegare ogni nota alle fonti originali
-4. Ricostruire indici e cataloghi
-5. Eseguire i controlli prima dei commit
+1. Depositare gli originali in `Raw/Files/` (ignorati da Git)
+2. Creare o aggiornare in `Raw/Sources/` la fonte Markdown normalizzata o trascritta, con il riferimento all'originale quando presente
+3. Compilare la conoscenza in `Wiki/` esclusivamente dalle fonti in `Raw/Sources/`
+4. Collegare ogni nota Wiki alle rispettive fonti in `Raw/Sources/`
+5. Ricostruire indici e cataloghi
+6. Eseguire i controlli prima dei commit
 
 
-## Ispirazione Generale
+## Ispirazione generale
 
-Wanderloots-Tutorials
--https://github.com/wanderloots-tutorials/vibe-coding/blob/main/wanderloots-llm-wiki-core-setup-v1.0.0.md
+- [Wanderloots — LLM Wiki Core Setup](https://github.com/wanderloots-tutorials/vibe-coding/blob/main/wanderloots-llm-wiki-core-setup-v1.0.0.md)
 
-## Skills Installate
+## Skills installate
 
-CEO Obsidian Kepano
--https://github.com/kepano/obsidian-skills
+- [Kepano — Obsidian Skills](https://github.com/kepano/obsidian-skills)

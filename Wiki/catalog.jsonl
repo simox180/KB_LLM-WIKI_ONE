@@ -2,5 +2,4 @@
 {"path": "Wiki/Concepts/heap.md", "sources": ["Raw/Sources/heap-e-heapsort.md"], "tag": "concept", "title": "Heap", "topics": ["[[Wiki/Topics/heap-e-code-di-priorita]]"], "updated": "2026-10-02"}
 {"path": "Wiki/Concepts/heapsort.md", "sources": ["Raw/Sources/heap-e-heapsort.md"], "tag": "concept", "title": "HeapSort", "topics": ["[[Wiki/Topics/heap-e-code-di-priorita]]"], "updated": "2026-10-02"}
 {"path": "Wiki/Logs/ingest-heap-e-heapsort.md", "sources": ["Raw/Sources/heap-e-heapsort.md"], "tag": "log", "title": "Ingest di heap, HeapSort e code di priorità", "topics": ["[[Wiki/Topics/heap-e-code-di-priorita]]"], "updated": "2026-10-02"}
-{"path": "Wiki/Projects/implementare-heap-e-coda-priorita.md", "sources": ["Raw/Sources/heap-e-heapsort.md"], "tag": "project", "title": "Implementare heap e coda di priorità", "topics": ["[[Wiki/Topics/heap-e-code-di-priorita]]"], "updated": "2026-10-02"}
 {"path": "Wiki/Topics/heap-e-code-di-priorita.md", "sources": ["Raw/Sources/heap-e-heapsort.md"], "tag": "topic", "title": "Heap e code di priorità", "topics": [], "updated": "2026-10-02"}

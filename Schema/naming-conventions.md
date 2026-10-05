@@ -9,8 +9,9 @@ tags:
 
 ## Directory
 
-- `Raw/Sources/`: fonti originali o acquisizioni non compilate.
-- `Wiki/`: note compilate e riutilizzabili.
+- `Raw/Files/`: file originali o binari (PDF, ZIP, immagini, DOCX e simili), non compilati e ignorati da Git; conserva il nome e l'estensione originali quando possibile.
+- `Raw/Sources/`: fonti Markdown normalizzate o trascritte derivate dai file in `Raw/Files/` (o da originali non disponibili nel repository); sono sorgenti, non note compilate.
+- `Wiki/`: conoscenza compilata e riutilizzabile, derivata esclusivamente da `Raw/Sources/`.
 - `Schema/`: contratti, convenzioni ed esempi operativi.
 - `.agents/skills/<skill-name>/`: istruzioni locali per gli agenti.
 
@@ -25,7 +26,9 @@ Usa kebab-case descrittivo: `argomento-specifico.md`.
 
 ## File Raw
 
-Conserva, se possibile, il nome originario. Se è necessario rinominarlo, usa `yyyy-mm-dd-origine-descrizione.estensione`. Non modificare l'estensione e non usare un nome che faccia sembrare il file una nota compilata.
+Per i file originali in `Raw/Files/`, conserva, se possibile, il nome originario. Se è necessario rinominarli, usa `yyyy-mm-dd-origine-descrizione.estensione`; non modificare l'estensione e non usare un nome che faccia sembrare il file una nota compilata.
+
+Per le fonti derivate in `Raw/Sources/`, usa un nome Markdown descrittivo in kebab-case, per esempio `strategie-di-chunking.md`, e registra nel frontmatter il riferimento all'originale quando disponibile.
 
 ## Metadati e tag
 
