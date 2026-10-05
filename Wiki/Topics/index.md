@@ -1,11 +1,18 @@
 # Topics
 
+- [[Wiki/Topics/agenti-llm|Agenti LLM]]
 - [[Wiki/Topics/alberi-binari-di-ricerca|BST e ReverseBST]]
 - [[Wiki/Topics/algoritmi-di-ordinamento|Algoritmi di ordinamento]]
+- [[Wiki/Topics/applicazioni-e-adozione-ai|Applicazioni e adozione dell'AI]]
+- [[Wiki/Topics/architettura-e-processo-della-llm-wiki|Architettura e processo della LLM Wiki]]
 - [[Wiki/Topics/catena-di-matrici|Catena di matrici]]
 - [[Wiki/Topics/collections-e-oggetti-java|Oggetti e Collections Java]]
+- [[Wiki/Topics/elaborazione-del-linguaggio-naturale|Elaborazione del linguaggio naturale]]
 - [[Wiki/Topics/grafi-visite-e-cammini-minimi|Grafi, visite, Prim e Dijkstra]]
 - [[Wiki/Topics/heap-e-code-di-priorita|Heap e code di priorità]]
 - [[Wiki/Topics/liste-concatenate-e-deque|Liste concatenate, deque e liste ricorsive]]
+- [[Wiki/Topics/machine-learning-e-reti-neurali|Machine learning e reti neurali]]
 - [[Wiki/Topics/metodo-operativo-implementazione|Metodo operativo per implementare strutture e algoritmi]]
+- [[Wiki/Topics/reinforcement-learning|Reinforcement learning]]
 - [[Wiki/Topics/tabelle-hash-e-dizionari|Tabelle hash e dizionari]]
+- [[Wiki/Topics/transformer-e-llm|Transformer e large language model]]

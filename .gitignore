@@ -13,3 +13,4 @@ Thumbs.db
 Raw/Files/*
 !Raw/Files/.gitkeep
 Drafts/
+.obsidian/graph.json
