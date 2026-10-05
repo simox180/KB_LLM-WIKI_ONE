@@ -16,8 +16,8 @@ aliases:
 
 # Elaborazione del linguaggio naturale
 
-Hub per rappresentazione, comprensione, generazione, applicazioni e valutazione del linguaggio naturale.
+Hub per rappresentazioni del linguaggio, comprensione, generazione e task applicativi.
 
-- [[Wiki/Concepts/nlu-nlg-e-componenti-di-base-dellnlp]]
-- [[Wiki/Concepts/applicazioni-e-valutazione-nlp]]
-- [[Wiki/Concepts/rappresentazioni-distribuite-e-transformer]]
+- Rappresentazioni: [[Wiki/Concepts/rappresentazioni-sparse-del-testo]], [[Wiki/Concepts/word-embeddings]], [[Wiki/Concepts/tokenizzazione]], [[Wiki/Concepts/architettura-transformer]]
+- Comprensione e analisi: [[Wiki/Concepts/natural-language-understanding]], [[Wiki/Concepts/analisi-linguistica-strutturata]], [[Wiki/Concepts/analisi-di-sentiment-ed-emozioni]], [[Wiki/Concepts/topic-modeling]], [[Wiki/Concepts/question-answering]]
+- Generazione e interazione: [[Wiki/Concepts/natural-language-generation]], [[Wiki/Concepts/sintesi-automatica]], [[Wiki/Concepts/traduzione-automatica]], [[Wiki/Concepts/agenti-conversazionali]]

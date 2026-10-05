@@ -15,6 +15,9 @@ aliases:
 
 # Agenti LLM
 
-Hub per architetture in cui un LLM pianifica, usa strumenti, conserva memoria e reagisce agli esiti.
+Hub per sistemi in cui un LLM è inserito in un ciclo di obiettivo, pianificazione, azione, osservazione e adattamento.
 
-- [[Wiki/Concepts/architettura-e-controlli-per-agenti-llm]]
+- [[Wiki/Concepts/architettura-di-agente-llm]]
+- [[Wiki/Concepts/memoria-e-strumenti-negli-agenti-llm]]
+- [[Wiki/Concepts/orchestrazione-di-agenti-llm]]
+- [[Wiki/Concepts/controlli-per-agenti-llm]]

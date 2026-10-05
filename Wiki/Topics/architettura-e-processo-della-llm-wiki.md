@@ -15,6 +15,7 @@ aliases:
 
 # Architettura e processo della LLM Wiki
 
-La Wiki separa il materiale Raw dalla conoscenza compilata e dalle regole operative. Il ciclo ripetibile è: aggiungere una fonte, cercare il contesto nel catalogo, compilare o aggiornare note focalizzate, costruire gli indici, eseguire i controlli e interrogare il risultato.
+Hub per la separazione fra fonti, conoscenza compilata e regole operative.
 
-- [[Wiki/Concepts/provenienza-e-ciclo-di-aggiornamento-della-llm-wiki]]
+- [[Wiki/Concepts/architettura-a-tre-livelli-della-llm-wiki]]
+- [[Wiki/Concepts/workflow-di-compilazione-della-llm-wiki]]

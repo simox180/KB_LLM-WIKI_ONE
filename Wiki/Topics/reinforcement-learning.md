@@ -15,6 +15,8 @@ aliases:
 
 # Reinforcement learning
 
-Hub per decisioni sequenziali, MDP, politiche, funzioni di valore e famiglie di metodi RL.
+Hub per apprendimento da ricompense in problemi decisionali sequenziali.
 
-- [[Wiki/Concepts/reinforcement-learning-e-mdp]]
+- [[Wiki/Concepts/processo-decisionale-markoviano]]
+- [[Wiki/Concepts/politiche-e-funzioni-di-valore]]
+- [[Wiki/Concepts/metodi-di-reinforcement-learning]]

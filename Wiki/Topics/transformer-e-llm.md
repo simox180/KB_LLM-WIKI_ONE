@@ -16,8 +16,8 @@ aliases:
 
 # Transformer e large language model
 
-Hub per rappresentazioni dense, Transformer, ciclo di vita e impiego responsabile dei LLM.
+Hub per Transformer, ciclo di vita dei LLM, adattamento e controlli nel deployment.
 
-- [[Wiki/Concepts/rappresentazioni-distribuite-e-transformer]]
-- [[Wiki/Concepts/ciclo-di-vita-e-adattamento-degli-llm]]
-- [[Wiki/Concepts/rag-allineamento-e-rischi-degli-llm]]
+- Fondamenti: [[Wiki/Concepts/meccanismo-di-attenzione]], [[Wiki/Concepts/architettura-transformer]], [[Wiki/Concepts/large-language-model]], [[Wiki/Concepts/pretraining-di-llm]]
+- Adattamento: [[Wiki/Concepts/adattamento-di-llm]], [[Wiki/Concepts/prompting-per-llm]], [[Wiki/Concepts/allineamento-e-rlhf]]
+- Conoscenza, rischio e esercizio: [[Wiki/Concepts/retrieval-augmented-generation]], [[Wiki/Concepts/rischi-e-controlli-degli-llm]], [[Wiki/Concepts/deployment-di-llm]]

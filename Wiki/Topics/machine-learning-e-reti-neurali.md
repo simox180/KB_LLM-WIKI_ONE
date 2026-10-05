@@ -16,10 +16,8 @@ aliases:
 
 # Machine learning e reti neurali
 
-Hub per apprendimento supervisionato, non supervisionato e per rinforzo, oltre alle reti neurali e al loro addestramento.
+Hub per paradigmi di apprendimento, reti neurali e preparazione del dato.
 
-- [[Wiki/Concepts/apprendimento-supervisionato-non-supervisionato-e-per-rinforzo]]
-- [[Wiki/Concepts/ottimizzazione-e-addestramento-di-reti-neurali]]
-- [[Wiki/Concepts/reinforcement-learning-e-mdp]]
-
-Le fonti presentano il deep learning come un sottoinsieme del machine learning che apprende rappresentazioni dai dati mediante reti neurali profonde.
+- Paradigmi: [[Wiki/Concepts/apprendimento-supervisionato]], [[Wiki/Concepts/apprendimento-non-supervisionato]], [[Wiki/Concepts/metodi-di-reinforcement-learning]]
+- Reti e addestramento: [[Wiki/Concepts/deep-learning]], [[Wiki/Concepts/reti-neurali-feed-forward]], [[Wiki/Concepts/ottimizzazione-di-reti-neurali]], [[Wiki/Concepts/preparazione-e-regolarizzazione-dei-dati]]
+- Metodi e architetture: [[Wiki/Concepts/support-vector-machine]], [[Wiki/Concepts/principal-component-analysis]], [[Wiki/Concepts/convolutional-neural-network]], [[Wiki/Concepts/graph-neural-network]], [[Wiki/Concepts/long-short-term-memory]], [[Wiki/Concepts/modelli-neurali-generativi]]

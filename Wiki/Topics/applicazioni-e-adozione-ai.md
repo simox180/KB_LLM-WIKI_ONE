@@ -15,4 +15,8 @@ aliases:
 
 # Applicazioni e adozione dell'AI
 
-La fonte raccoglie esempi di forecasting, sistemi autonomi, pianificazione, decision intelligence, computer vision, NLP e automazione. Ricorrono qualità dei dati, integrazione con i processi, privacy, spiegabilità, sicurezza e governance come condizioni o sfide di adozione.
+Hub per i principali impieghi descritti dalla fonte. Qualità dei dati, integrazione nei processi, privacy, spiegabilità, sicurezza e governance attraversano le diverse adozioni.
+
+- Decisione e operazioni: [[Wiki/Concepts/forecasting-con-ai]], [[Wiki/Concepts/sistemi-autonomi]], [[Wiki/Concepts/pianificazione-intelligente]], [[Wiki/Concepts/decision-intelligence]], [[Wiki/Concepts/automazione-intelligente]]
+- Personalizzazione, percezione e controllo: [[Wiki/Concepts/sistemi-di-raccomandazione]], [[Wiki/Concepts/classificazione-e-segmentazione]], [[Wiki/Concepts/percezione-artificiale]], [[Wiki/Concepts/rilevamento-delle-anomalie]]
+- Sistemi linguistici e conoscenza: [[Wiki/Concepts/agenti-conversazionali]], [[Wiki/Concepts/generazione-intelligente-di-contenuti]], [[Wiki/Concepts/knowledge-discovery]]
