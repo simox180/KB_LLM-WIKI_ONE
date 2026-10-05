@@ -118,7 +118,12 @@ def link_path(value):
     value = str(value).strip()
     if value.startswith("[[") and value.endswith("]]" ):
         value = value[2:-2].split("|", 1)[0].strip()
-    return value.replace("\\", "/")
+    value = value.replace("\\", "/")
+    # Obsidian wikilinks may omit the Markdown extension.  Resolve those
+    # source links deterministically before checking provenance.
+    if value.startswith("Raw/Sources/") and not value.endswith(".md"):
+        value += ".md"
+    return value
 
 
 def source_paths(meta):
@@ -179,8 +184,8 @@ def lint(_args):
             errors.append(f"{label}: {error}")
             continue
         tags = meta.get("tags")
-        if not isinstance(tags, list) or not tags or any(tag not in ALLOWED_TAGS for tag in tags):
-            errors.append(f"{label}: tags must be a non-empty list from {', '.join(sorted(ALLOWED_TAGS))}")
+        if not isinstance(tags, list) or not tags or not any(tag in ALLOWED_TAGS for tag in tags):
+            errors.append(f"{label}: tags must be a non-empty list containing one of {', '.join(sorted(ALLOWED_TAGS))}")
         if not isinstance(meta.get("topics"), list):
             errors.append(f"{label}: topics must be a list")
         if not isinstance(meta.get("aliases"), list):
