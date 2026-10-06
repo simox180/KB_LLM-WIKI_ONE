@@ -139,10 +139,25 @@ def load_notes():
     return result
 
 
+def eligible_coverage_note(meta) -> bool:
+    """Whether metadata represents a compiled note eligible as source linkage.
+
+    This is deliberately a structural filter: an eligible link records declared
+    provenance only and never establishes semantic completeness.
+    """
+    if not meta:
+        return False
+    tags = meta.get("tags", [])
+    if not isinstance(tags, list) or "log" in tags:
+        return False
+    return str(meta.get("status", "")).casefold() != "deprecated"
+
+
 def coverage():
+    """Map Raw sources to eligible linked notes, not semantic coverage."""
     covered = {repo_path(p): [] for p in markdown_files(RAW)}
     for note, meta, error in load_notes():
-        if error or not meta:
+        if error or not eligible_coverage_note(meta):
             continue
         for entry in source_paths(meta):
             target = link_path(entry)
@@ -236,13 +251,13 @@ def source_scan(args):
             path = ROOT / raw_path
             meta, _ = frontmatter(path)
             processed = bool(meta and meta.get("Processed") is True)
-            records.append({"path": raw_path, "title": str(meta.get("Title", path.stem)) if meta else path.stem, "processed": processed, "covered_by": notes, "updated": today()})
+            records.append({"path": raw_path, "title": str(meta.get("Title", path.stem)) if meta else path.stem, "processed": processed, "linked_by": notes, "updated": today()})
         MANIFEST.parent.mkdir(parents=True, exist_ok=True)
         MANIFEST.write_text("".join(json.dumps(x, ensure_ascii=False, sort_keys=True) + "\n" for x in records), encoding="utf-8")
         print(f"updated manifest with {len(records)} sources")
     else:
         for raw_path, notes in entries.items():
-            print(f"{raw_path}\t{'covered' if notes else 'uncovered'}")
+            print(f"{raw_path}\t{'linked' if notes else 'unlinked'}")
     return 0
 
 
@@ -261,7 +276,7 @@ def source_lint(_args):
         if "Processed" in meta and not isinstance(meta["Processed"], bool):
             errors.append(f"{label}: Processed must be true or false")
         if meta.get("Processed") is True and not covered.get(label):
-            errors.append(f"{label}: processed source has no Wiki coverage")
+            errors.append(f"{label}: processed source has no eligible linked Wiki note")
     return report(errors, "source-lint passed")
 
 
@@ -280,7 +295,7 @@ def source_delta(_args):
 
 def source_coverage(_args):
     for raw_path, notes in coverage().items():
-        print(f"{raw_path}: " + (", ".join(notes) if notes else "uncovered"))
+        print(f"{raw_path}: " + (", ".join(notes) if notes else "unlinked"))
     return 0
 
 

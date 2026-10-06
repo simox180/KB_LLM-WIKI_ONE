@@ -7,26 +7,22 @@ tags:
 
 # Lint checklist
 
-Esegui questa checklist insieme agli script di build, lint e controllo fonti prima di ogni commit.
+Questa checklist separa la validazione automatizzabile dalla revisione semantica. Un collegamento tra una nota e una fonte attesta soltanto la provenienza dichiarata: non dimostra che la compilazione sia completa.
 
-## Struttura
+## Controlli automatici
 
-- [ ] Le note compilate nuove o modificate sono esclusivamente in `Wiki/`.
-- [ ] I file in `Raw/Sources/` sono stati trattati come sorgenti e non come note compilate.
-- [ ] Nomi, percorsi e tag rispettano `Schema/naming-conventions.md`.
-- [ ] Il frontmatter YAML è presente e valido per ogni nota `Wiki/` modificata.
+- [ ] Esegui `doctor`, `build`, `lint` e `source-lint` quando applicabili.
+- [ ] Build, lint e source-lint terminano con successo.
+- [ ] Nomi, percorsi, tag e frontmatter delle note modificate rispettano `Schema/naming-conventions.md` e `Schema/frontmatter-schema.md`.
+- [ ] Ogni `sources` di una nota compilata punta a un file esistente sotto `Raw/Sources/` e `source_count` è coerente.
+- [ ] Catalogo e indici generati sono aggiornati o verificati secondo gli strumenti del repository.
 
-## Provenienza
+## Revisione del contenuto
 
-- [ ] Ogni nota compilata ha uno o più `sources` che puntano a file esistenti in `Raw/`.
-- [ ] Ogni affermazione fattuale o citazione è supportata da una fonte collegata.
-- [ ] Citazioni e localizzatori non sono stati inventati.
-- [ ] Limiti, conflitti e incertezze delle fonti sono indicati chiaramente.
-
-## Indici e controlli
-
-- [ ] È stata consultata `Wiki/catalog.jsonl` prima di aprire un contesto Raw ampio.
-- [ ] Catalogo e indici richiesti sono stati rigenerati o verificati.
-- [ ] Build completata con successo.
-- [ ] Lint completato con successo.
-- [ ] Controllo delle fonti completato con successo.
+- [ ] Per un'ingestione, la fonte è stata esaminata integralmente e la compilazione è stata confrontata con `Schema/knowledge-quality.md`.
+- [ ] Affermazioni, citazioni e localizzatori sono supportati dalle fonti collegate e non sono inventati.
+- [ ] Definizioni, funzionamento, formule, parametri, esempi significativi, condizioni e limiti rilevanti sono stati conservati oppure la loro omissione è giustificata dalla pertinenza della nota.
+- [ ] Immagini, tabelle e formule con estrazione insufficiente sono state verificate sull'originale o dichiarate non verificabili.
+- [ ] Sono distinguibili contenuto della fonte, sintesi e inferenze; incertezze, conflitti e limiti sono dichiarati.
+- [ ] Sono state integrate le note esistenti e aggiunti collegamenti pertinenti senza duplicare conoscenza.
+- [ ] Nessuna fonte è considerata semanticamente completa solo perché collegata a una nota, né se restano parti sostanziali omesse o non verificate.

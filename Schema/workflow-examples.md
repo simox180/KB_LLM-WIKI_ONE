@@ -12,10 +12,10 @@ tags:
 1. Deposita il documento originale o binario in `Raw/Files/`; resta non compilato ed è ignorato da Git.
 2. Crea in `Raw/Sources/` una fonte Markdown normalizzata o trascritta derivata dall'originale, indicando il file e il passaggio di provenienza quando disponibili.
 3. Cerca prima in `Wiki/catalog.jsonl` se esistono note o fonti già indicizzate sul tema.
-4. Leggi soltanto le parti necessarie di `Raw/Sources/`, annotando percorso e localizzatore del passaggio; consulta `Raw/Files/` solo per trascrivere o verificare l'originale.
+4. Esamina integralmente la fonte in `Raw/Sources/`, anche per blocchi, annotando percorso e localizzatore quando disponibile. Consulta `Raw/Files/` per verificare l'originale se testo, immagini, tabelle o formule non sono sufficienti.
 5. Crea o aggiorna una nota in `Wiki/`, derivandola esclusivamente da `Raw/Sources/`, con il frontmatter previsto e almeno un link in `sources`.
-6. Scrivi solo sintesi e affermazioni supportate; marca limiti, conflitti o incertezze.
-7. Aggiorna il catalogo con gli strumenti del repository quando disponibili, quindi esegui build, lint e controlli delle fonti.
+6. Conserva il contenuto rilevante della fonte, scrivi solo sintesi e affermazioni supportate e marca limiti, conflitti, inferenze o parti non verificabili. Non trattare il semplice collegamento come prova di copertura completa.
+7. Riesamina la compilazione rispetto a `Schema/knowledge-quality.md`; aggiorna il catalogo con gli strumenti del repository quando disponibili, quindi esegui build, lint e controlli delle fonti.
 
 ## Esempio di nota
 
