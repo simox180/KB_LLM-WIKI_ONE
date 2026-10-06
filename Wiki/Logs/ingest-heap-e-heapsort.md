@@ -16,7 +16,6 @@ related:
   - "[[Wiki/Concepts/heap]]"
   - "[[Wiki/Concepts/heapsort]]"
   - "[[Wiki/Concepts/coda-di-priorita]]"
-  - "[[Wiki/Projects/implementare-heap-e-coda-priorita]]"
 ---
 
 # Ingest di heap, HeapSort e code di priorità

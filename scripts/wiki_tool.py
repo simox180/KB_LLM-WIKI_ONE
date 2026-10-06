@@ -181,11 +181,13 @@ def build(_args):
     folders = sorted([WIKI] + [p for p in WIKI.rglob("*") if p.is_dir()])
     for folder in folders:
         children = sorted(p for p in folder.iterdir() if p.is_file() and p.suffix == ".md" and p.name not in {"index.md", "log.md"})
-        lines = ["# " + ("Wiki index" if folder == WIKI else folder.name), ""]
-        for child in children:
-            meta, error = frontmatter(child)
-            label = str(meta.get("title", child.stem)) if not error else child.stem
-            lines.append(f"- [[{repo_path(child)[:-3]}|{label}]]")
+        lines = ["# " + ("Wiki index" if folder == WIKI else folder.name)]
+        if children:
+            lines.append("")
+            for child in children:
+                meta, error = frontmatter(child)
+                label = str(meta.get("title", child.stem)) if not error else child.stem
+                lines.append(f"- [[{repo_path(child)[:-3]}|{label}]]")
         lines.append("")
         (folder / "index.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"built {len(records)} catalog records and {len(folders)} indexes")
